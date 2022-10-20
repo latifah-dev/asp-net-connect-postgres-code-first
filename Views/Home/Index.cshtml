@@ -1,0 +1,42 @@
+﻿@using System.Collections;
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<CodeFirst.Models.Entities.Barang>
+
+<h1 class="display-4">Ini Barangmu</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">No Barang</th>
+      <th scope="col">Kode Barang</th>
+      <th scope="col">Nama Barang</th>
+      <th scope="col">Harga</th>
+      <th scope="col">Stok</th>
+    <th scope="col">Action</th>
+    </tr>
+  </thead>
+@if(Model != null)
+{
+foreach (var item in Model)
+{
+  <tbody>
+    <tr>
+      <th scope="row">@item.Id</th>
+      <td>@item.Kode</td>
+      <td>@item.Nama</td>
+      <td>@item.Harga</td>
+      <td>@item.Stok</td>
+      <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+    </tr>
+  </tbody>
+  
+}
+}else{
+    <h1>Data barang null</h1>
+    }
+</table>
